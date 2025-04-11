@@ -1,0 +1,72 @@
+[
+    {
+        "nome": "exemplo",
+        "genero": "Doujinshi",
+        "autor": "adasd",
+        "estudio": "asdasd",
+        "ano": "121212",
+        "avaliacao": "5",
+        "descricao": "asdadasd",
+        "imagem_url": "https:\/\/i.pinimg.com\/236x\/7d\/0e\/68\/7d0e68d3982cf67cfe6504e165029bd1.jpg"
+    },
+    {
+        "nome": "exemplo",
+        "genero": "Doujinshi",
+        "autor": "adasd",
+        "estudio": "asdasd",
+        "ano": "121212",
+        "avaliacao": "5",
+        "descricao": "asdadasd",
+        "imagem_url": "https:\/\/i.pinimg.com\/236x\/7d\/0e\/68\/7d0e68d3982cf67cfe6504e165029bd1.jpg"
+    },
+    {
+        "nome": "exemplo",
+        "genero": "Doujinshi",
+        "autor": "adasd",
+        "estudio": "asdasd",
+        "ano": "121212",
+        "avaliacao": "5",
+        "descricao": "asdadasd",
+        "imagem_url": "https:\/\/i.pinimg.com\/236x\/7d\/0e\/68\/7d0e68d3982cf67cfe6504e165029bd1.jpg"
+    },
+    {
+        "nome": "adasd",
+        "genero": "Doujinshi",
+        "autor": "adasd",
+        "estudio": "asdasd",
+        "ano": "2232",
+        "avaliacao": "3",
+        "descricao": "dasdas",
+        "imagem_url": "https:\/\/i.pinimg.com\/236x\/7d\/0e\/68\/7d0e68d3982cf67cfe6504e165029bd1.jpg"
+    },
+    {
+        "nome": "asdasd",
+        "genero": "Doujinshi",
+        "autor": "asdasd",
+        "estudio": "asdasd",
+        "ano": "1212",
+        "avaliacao": "4",
+        "descricao": "asdasdaasdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "imagem_url": "https:\/\/i.pinimg.com\/236x\/7d\/0e\/68\/7d0e68d3982cf67cfe6504e165029bd1.jpg"
+    },
+    {
+        "nome": "Jo\u00e3o Rodrigues",
+        "genero": "Kodomomuke",
+        "autor": "asdasd",
+        "estudio": "asdasd",
+        "ano": "3232",
+        "avaliacao": "3",
+        "descricao": "231dasdasd",
+        "imagem_url": "https:\/\/i.pinimg.com\/236x\/7d\/0e\/68\/7d0e68d3982cf67cfe6504e165029bd1.jpg"
+    },
+    {
+        "nome": "Jo\u00e3o Rodrigues",
+        "genero": "Mecha",
+        "autor": "asdasda",
+        "estudio": "asdasd",
+        "ano": "3434324",
+        "avaliacao": "3",
+        "descricao": "asdasdasda",
+        "imagem_url": "https:\/\/i.pinimg.com\/236x\/7d\/0e\/68\/7d0e68d3982cf67cfe6504e165029bd1.jpg"
+    }
+]
