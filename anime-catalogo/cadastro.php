@@ -57,103 +57,107 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <title>Cadastrar Anime</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url('img/@animangascenery.gif');
-            margin: 0;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            
-        }
-
-        nav {
-            background-color: #222;
-            color: white;
-            padding: 15px;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 3px;
-        }
-
-        nav a.active {
-            background-color: #444;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 80px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            background-color: black;
-            color: white;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin: 10px 0;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            font-size: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .form-group textarea {
-            height: 100px;
-            min-height: 100px;
-            resize: none;
-            width: 100%;
-            padding: 10px;
-            font-size: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
+       body {
+    font-family: Arial, sans-serif;
+    background-image: url('img/@animangascenery.gif');
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
+nav {
+    background-color: #222;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
 
-        button {
-            width: 100%;
-            background-color: #222;
-            color: white;
-            border: none;
-            padding: 12px;
-            font-size: 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 15px;
-        }
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
 
-        button:hover {
-            background-color: #444;
-        }
+nav a.active {
+    background-color: #444;
+}
+
+.container {
+    max-width: 600px;
+    margin: 80px auto;
+    background:rgb(19, 41, 70);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border:rgb(255, 255, 255);
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #aaa;
+}
+
+.form-group select option {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.form-group textarea {
+    height: 100px;
+    min-height: 100px;
+    resize: none;
+}
+
+button {
+    width: 100%;
+    background-color:rgb(24, 30, 56);
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color:rgb(20, 19, 88);
+}
+
     </style>
 </head>
 <body>
