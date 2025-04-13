@@ -1,13 +1,12 @@
 <?php
 session_start();
 
-// Função para carregar usuários do arquivo
+
 function carregarUsuarios() {
     $usuarios = [];
     if (file_exists('usuarios.txt')) {
         $file = fopen('usuarios.txt', 'r');
         while ($linha = fgets($file)) {
-            // Separar nome de usuário e senha
             list($usuario, $senha) = explode(":", trim($linha));
             $usuarios[$usuario] = $senha;
         }
@@ -16,7 +15,7 @@ function carregarUsuarios() {
     return $usuarios;
 }
 
-// Função para salvar usuários no arquivo
+
 function salvarUsuarios($usuarios) {
     $file = fopen('usuarios.txt', 'w');
     foreach ($usuarios as $usuario => $senha) {
@@ -25,158 +24,194 @@ function salvarUsuarios($usuarios) {
     fclose($file);
 }
 
-// Lógica para o login ou cadastro
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = $_POST['usuario'] ?? '';
     $senha = $_POST['senha'] ?? '';
     $confirmar_senha = $_POST['confirmar_senha'] ?? '';
     $acao = $_POST['acao'] ?? '';
     
-    // Carregar usuários do arquivo
+
     $usuarios = carregarUsuarios();
     
-    // Se for um login
     if ($acao === 'login') {
-        if (isset($usuarios[$usuario]) && $usuarios[$usuario] === $senha) {
+        if (isset($usuarios[$usuario]) && password_verify($senha, $usuarios[$usuario])) {
             $_SESSION['usuario_nome'] = $usuario;
-            $_SESSION['primeiro_login'] = $_SESSION['primeiro_login'] ?? date("Y-m-d H:i:s"); // Se for a primeira vez
-            $_SESSION['ultimo_login'] = date("Y-m-d H:i:s"); // Atualiza o último login
-            header('Location: perfil.php'); // Redireciona para a página de perfil
+            $_SESSION['primeiro_login'] = $_SESSION['primeiro_login'] ?? date("Y-m-d H:i:s");
+            $_SESSION['ultimo_login'] = date("Y-m-d H:i:s");
+            header('Location: perfil.php');
             exit;
         } else {
             $erro = 'Usuário ou senha inválidos.';
         }
     }
-    
-    // Se for cadastro de novo usuário
+
+
     elseif ($acao === 'cadastro') {
-        // Verificar se o nome de usuário já existe
         if (isset($usuarios[$usuario])) {
             $erro = 'Nome já está sendo usado.';
         } elseif ($senha === $confirmar_senha) {
-            // Adicionar novo usuário ao array
-            $usuarios[$usuario] = $senha;
-            salvarUsuarios($usuarios);  // Salvar usuários no arquivo
+          
+            $usuarios[$usuario] = password_hash($senha, PASSWORD_DEFAULT);
+            salvarUsuarios($usuarios);
             $_SESSION['usuario_nome'] = $usuario;
-            $_SESSION['primeiro_login'] = date("Y-m-d H:i:s"); // Primeira vez login
-            $_SESSION['ultimo_login'] = date("Y-m-d H:i:s"); // Atualiza o último login
-            header('Location: perfil.php'); // Redireciona para a página de perfil
+            $_SESSION['primeiro_login'] = date("Y-m-d H:i:s");
+            $_SESSION['ultimo_login'] = date("Y-m-d H:i:s");
+            header('Location: perfil.php');
             exit;
         } else {
             $erro = 'As senhas não coincidem.';
-        }
-    }
+}
+}
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <title>Login / Cadastro</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-             background-image: url('img/….gif');
-            margin: 0;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                color: white;
+                position: relative;
+                overflow-x: hidden;
+            }
 
-        nav {
-            background-color: #222;
-            color: white;
-            padding: 15px;
-            display: flex;
-            justify-content: flex-end;
-        }
+            body::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url('img/….gif');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                filter: blur(8px);
+                z-index: -1;
+            }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 3px;
-        }
+            nav {
+                padding: 20px 40px;
+                display: flex;
+                justify-content: flex-end;
+                gap: 20px;
+                position: relative;
+            }
 
-        nav a.active {
-            background-color: #444;
-        }
+            nav a {
+                color: white;
+                text-decoration: none;
+                font-size: 18px;
+                font-weight: bold;
+                padding: 8px 16px;
+                border: 1px solid rgba(255,255,255,0.3);
+                border-radius: 8px;
+                transition: 0.3s;
+            }
 
-        .container {
-            max-width: 400px;
-            margin: 80px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.56);
-            background-color: rgb(10, 15, 66);
-            color: white;
-        }
+            nav a:hover, nav a.active {
+                background-color: rgba(255,255,255,0.1);
+                backdrop-filter: blur(5px);
+            }
 
-        h2 {
-            text-align: center;
-        }
+            .container {
+                max-width: 350px;
+                margin: 100px auto;
+                background: rgba(0, 0, 50, 0.7);
+                padding: 30px;
+                border-radius: 20px;
+                box-shadow: 0 0 20px rgba(0,0,0,0.7);
+                backdrop-filter: blur(5px);
+            }
 
-        input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 12px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+            h2 {
+                text-align: center;
+                margin-bottom: 25px;
+                font-size: 28px;
+            }
 
-        button {
-            width: 100%;
-            background-color: rgba(99, 16, 194, 0.56);
-            color: white;
-            border: none;
-            padding: 12px;
-            font-size: 16px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+            input[type="text"],
+            input[type="password"] {
+                width: 95%;
+                padding: 12px;
+                margin: 10px 0;
+                font-size: 16px;
+                border: none;
+                border-radius: 8px;
+                background: rgba(255,255,255,0.1);
+                color: white;
+                outline: none;
+                transition: 0.3s;
+            }
 
-        button:hover {
-            background-color:rgba(9, 107, 107, 0.71) ;
-        }
 
-        .erro {
-            color: red;
-            text-align: center;
-            margin-top: 10px;
-        }
+            input[type="text"]:focus,
+            input[type="password"]:focus {
+                background: rgba(255,255,255,0.2);
+            }
 
-        .alternativa {
-            text-align: center;
-            margin-top: 15px;
-        }
+            button {
+                width: 101%;
+                padding: 12px;
+                margin: 10px 0; 
+                font-size: 18px;
+                border: none;
+                border-radius: 8px;
+                background: rgba(99, 16, 194, 0.7);
+                color: white;
+                cursor: pointer;
+                transition: 0.3s;
+            }
 
-        .opcao-login-cadastro {
-            display: flex;
-            justify-content: space-between;
-        }
+            button:hover {
+                background: rgba(9, 107, 107, 0.8);
+            }
+
+            .opcao-login-cadastro {
+                display: flex;
+                justify-content: space-between;
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+
+            .opcao-login-cadastro label {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .erro {
+                color: #ff6b6b;
+                text-align: center;
+                margin-top: 10px;
+                font-weight: bold;
+            }
+
+            #confirmar_senha_div {
+                margin-top: 10px;
+            }
+
     </style>
 </head>
 <body>
 
-<!-- Navegação -->
+
 <nav>
-    <a href="index.php">Catálogo</a> <!-- Corrigido o link para index.php -->
+    <a href="index.php">Catálogo</a> 
     <a href="login.php" class="active">Login</a>
 </nav>
 
-<!-- Formulário -->
+
 <div class="container">
     <h2>Login / Cadastro</h2>
 
-    <!-- Formulário de Login -->
+
     <form method="POST">
-        <!-- Seleção de Login ou Cadastro -->
+
         <div class="opcao-login-cadastro">
             <label><input type="radio" name="tipo_usuario" value="existente" checked> Usuário Existente</label>
             <label><input type="radio" name="tipo_usuario" value="novo"> Novo Usuário</label>
@@ -185,7 +220,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="usuario">Usuário:</label>
         <input type="text" name="usuario" id="usuario" required>
 
-        <!-- Se for um novo usuário, mostrar campo de confirmação de senha -->
         <label for="senha">Senha:</label>
         <input type="password" name="senha" id="senha" required>
 
@@ -194,7 +228,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="password" name="confirmar_senha" id="confirmar_senha">
         </div>
 
-        <!-- Ação de login ou cadastro -->
+    
         <input type="hidden" name="acao" id="acao" value="login">
 
         <button type="submit" id="submit-button">Entrar</button>
@@ -206,7 +240,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 
 <script>
-    // Função para alterar entre login e cadastro
     document.querySelectorAll('input[name="tipo_usuario"]').forEach((input) => {
         input.addEventListener('change', function() {
             if (this.value === 'novo') {
@@ -224,3 +257,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php include 'footer.php'; ?>
 </body>
 </html>
+
