@@ -29,7 +29,7 @@ if (!isset($_SESSION['primeiro_login'])) {
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color:rgb(54, 99, 158);
+            background-color:rgba(27, 57, 102, 0.77);
             margin: 0;
         }
 
@@ -61,7 +61,8 @@ if (!isset($_SESSION['primeiro_login'])) {
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            background-color:rgba(148, 212, 255, 0.8);
+            background-color:rgba(32, 72, 117, 0.8);
+            color: white;
         }
 
         h2 {
@@ -74,7 +75,7 @@ if (!isset($_SESSION['primeiro_login'])) {
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            background-color: rgb(255, 250, 221);;
+            background-color: rgb(8, 39, 53);
             text-align: center;
             line-height: 150px;
             font-size: 50px;
@@ -87,7 +88,7 @@ if (!isset($_SESSION['primeiro_login'])) {
 
         button {
             width: 100%;
-            background-color: #222;
+            background-color:rgb(8, 11, 53);
             color: white;
             border: none;
             padding: 12px;
