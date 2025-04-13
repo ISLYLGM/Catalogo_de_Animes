@@ -71,7 +71,7 @@ if (!$anime) {
     font-family: Arial, sans-serif;
     padding: 0;
     margin: 0;
-    background-color:rgb(57, 77, 163);
+    background-color:rgb(13, 60, 87);
 }
 
 nav {
@@ -104,10 +104,10 @@ nav a.active {
 .anime-detalhes {
     max-width: 700px;
     margin: 90px auto 30px; /* Ajusta a margem superior para não ficar atrás do menu fixo */
-    background-color:rgb(14, 8, 36);
+    background-color:rgb(9, 40, 66);
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.41);
     text-align: left;
     color: white;
 }
@@ -147,7 +147,7 @@ nav a.active {
     display: inline-block;
     margin-top: 25px;
     padding: 10px 20px;
-    background-color: rgb(22, 18, 11);
+    background-color: rgb(24, 75, 90);
     color: white;
     text-decoration: none;
     border-radius: 5px;
